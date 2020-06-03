@@ -3,6 +3,9 @@ import { GlobalContext } from "../context/GlobalState";
 import { v4 as uuid } from "uuid";
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
+
+import '../App.css';
+
 import {
   Form,
   FormGroup,
@@ -58,12 +61,12 @@ export const AddUser = () => {
   return (
     <Form onSubmit={onSubmit}>
       <FormGroup>
-        <Label>Name</Label>
-        <Input type="text" value={name} onChange={onChangeName} name="name" placeholder="Enter user" required></Input>
-        <Input type="text" value={salary} onChange={onChangeSalary} name="salary" placeholder="Enter salary" required></Input>
-        <Input type="text" value={age} onChange={onChangeAge} name="age" placeholder="Enter age" required></Input>
+        <Label>Employee</Label>
+        <Input className="Input-Style" type="text" value={name} onChange={onChangeName} name="name" placeholder="Enter employee" required></Input>
+        <Input className="Input-Style" type="text" value={salary} onChange={onChangeSalary} name="salary" placeholder="Enter salary" required></Input>
+        <Input className="Input-Style" type="text" value={age} onChange={onChangeAge} name="age" placeholder="Enter age" required></Input>
       </FormGroup>
-      <Button type="submit">Submit</Button>
+      <Button className="Input-Style" type="submit">Submit</Button>
       <Link to="/" className="btn btn-danger ml-2">Cancel</Link>
     </Form>
   )

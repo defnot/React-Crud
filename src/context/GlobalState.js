@@ -35,12 +35,20 @@ export const GlobalProvider = ({ children }) => {
     })
   }
 
+
+  function filterByAge() {
+    dispatch({
+      type: 'FILTER_BY_AGE'
+    });
+  }
+
   return (
     <GlobalContext.Provider value={{
       users: state.users,
       removeUser,
       addUser,
-      editUser
+      editUser,
+      filterByAge
     }}>
       {children}
     </GlobalContext.Provider>

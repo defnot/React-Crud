@@ -44,6 +44,14 @@ export default (state, action) => {
         users: updateUsers
       }
 
+      case 'FILTER_BY_AGE': 
+        const filteredUsers = state.users.sort((a, b) => (a.employee_age > b.employee_age) ? 1 : -1);
+        
+        return {
+        ...state,
+        users: filteredUsers
+      }
+
     default:
       return state;
   }

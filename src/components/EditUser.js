@@ -2,6 +2,9 @@ import React, { useState, useContext, useEffect } from 'react';
 import { GlobalContext } from "../context/GlobalState";
 import { Link, useHistory } from "react-router-dom";
 import axios from 'axios';
+
+import '../App.css';
+
 import {
   Form,
   FormGroup,
@@ -22,16 +25,11 @@ export const EditUser = (props) => {
     profile_image: ''
   })
 
-  const [name, setName] = useState('');
-  const [salary, setSalary] = useState('');
-  const [age, setAge] = useState('');
-
   const currentUserId = props.match.params.id;
 
   const history = useHistory();
 
   useEffect(() => {
-    const userId = currentUserId;
     const selectedUser = users.find(user => user.id === currentUserId);
     setSelectedEmployee(selectedUser);
   }, [currentUserId, users])
@@ -71,7 +69,6 @@ export const EditUser = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(selectedEmployee);
     editUser(selectedEmployee);
     editEmployee();
   
@@ -82,18 +79,17 @@ export const EditUser = (props) => {
 
     axios.put(url, selectedEmployee);
     
-    //axios.put('https://9sf7x3qadg.execute-api.eu-west-1.amazonaws.com/api/employee/' + currentUserId, {selectedEmployee});
   }
   return (
     <Form onSubmit={onSubmit}>
       <FormGroup>
-        <Label>Name</Label>
-        <Input type="text"   value={selectedEmployee ? selectedEmployee.employee_name : ""} onChange={onChangeName} name="name" placeholder="Enter Name" required></Input>
-        <Input type="text"   value={selectedEmployee ? selectedEmployee.employee_salary: ""} onChange={onChangeSalary} name="salary" placeholder="Enter Salary" required></Input>
-        <Input type="text"   value={selectedEmployee ? selectedEmployee.employee_age: ""} onChange={onChangeAge} name="age" placeholder="Enter Age" required></Input>
+        <Label>Employee</Label>
+        <Input className="Input-Style" type="text" value={selectedEmployee ? selectedEmployee.employee_name : ""} onChange={onChangeName} name="name" placeholder="Enter Name" required></Input>
+        <Input className="Input-Style" type="text" value={selectedEmployee ? selectedEmployee.employee_salary: ""} onChange={onChangeSalary} name="salary" placeholder="Enter Salary" required></Input>
+        <Input className="Input-Style" type="text" value={selectedEmployee ? selectedEmployee.employee_age: ""} onChange={onChangeAge} name="age" placeholder="Enter Age" required></Input>
       </FormGroup>
-      <Button type="submit">Edit Name</Button>
-      <Link to="/" className="btn btn-danger ml-2">Cancel</Link>
+      <Button className="Input-Style" type="submit">Edit Employee</Button>
+      <Link className="Input-Style" to="/" className="btn btn-danger ml-2">Cancel</Link>
     </Form>
   )
 }

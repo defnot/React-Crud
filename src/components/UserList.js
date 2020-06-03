@@ -1,15 +1,12 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, { useContext } from 'react';
 import { GlobalContext } from "../context/GlobalState";
 import { Link } from "react-router-dom";
-import {useHistory } from "react-router-dom";
 
 import {
   ListGroup,
   ListGroupItem,
   Button
 } from "reactstrap";
-
-import axios from 'axios';
 
 export const UserList = props => {
 
@@ -21,7 +18,7 @@ export const UserList = props => {
         <>
           {users.map((employee, index) => (
             <ListGroupItem className="d-flex" key={index}>
-              <strong>{employee.employee_name}, Salary: {employee.employee_salary} $</strong>
+              <strong>{employee.employee_name}, Age: {employee.employee_age}</strong>
               <div className="ml-auto" key={index}>
                 <Link to={`/edit/${employee.id}`} color="warning" className="btn btn-warning mr-1">Edit</Link>
                 <Button onClick={() => props.removeEmployee(employee.id)} color="danger">Delete</Button>

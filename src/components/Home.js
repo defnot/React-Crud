@@ -9,17 +9,9 @@ import axios from 'axios';
 export const Home = () => {
   const [ employees, setEmployees ] = useState({ employees: [] })
 
-  const { users, removeUser } = useContext(GlobalContext);
+  const { removeUser } = useContext(GlobalContext);
 
   const { addUser } = useContext(GlobalContext);
-  
-
-	// Data
-	/* const usersData = [
-		{ id: 1, name: 'Tania', username: 'floppydiskette' },
-		{ id: 2, name: 'Craig', username: 'siliconeidolon' },
-		{ id: 3, name: 'Ben', username: 'benisphere' },
-	] */
 	
 	useEffect(() => {
 		async function fetchData() {
@@ -29,12 +21,7 @@ export const Home = () => {
 			setEmployees(result.data);
 	    }
 
-	    fetchData();
-
-	    console.log('how many times I ran')
-	    
-	    //employees.map(employee => addUser(employee));	
-		
+	    fetchData();		
   }, []);
 
   const removeEmployee = id => {
